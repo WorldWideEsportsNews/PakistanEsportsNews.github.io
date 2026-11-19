@@ -1,0 +1,40 @@
+
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+  <h2>PAKISTAN ESPORTS NEWS</h2>
+
+  <p>
+    Your home for Pakistan's Free Fire esports news.
+    Get tournament updates, team announcements,
+    player highlights and MVP stories.
+  </p>
+
+  <a href="{{ '/tournaments/' | relative_url }}">
+    <button>EXPLORE TOURNAMENTS</button>
+  </a>
+</section>
+
+<h2 class="section-title">LATEST ESPORTS NEWS</h2>
+
+{% for post in site.posts limit: 10 %}
+<div class="news-card">
+  <h3>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  </h3>
+
+  <p>{{ post.date | date: "%d %B %Y" }}</p>
+
+  <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+
+  <a href="{{ post.url | relative_url }}">READ FULL STORY →</a>
+</div>
+{% else %}
+<div class="news-card">
+  <h3>News Coming Soon</h3>
+  <p>Our latest esports stories will appear here.</p>
+</div>
+{% endfor %}
